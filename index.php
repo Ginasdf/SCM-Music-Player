@@ -207,7 +207,6 @@ SCMMusicPlayer.init(&quot;=settings=&quot;);
 <li><a href="index.php">HOME</a></li>
 <li><a href="index.php#wizard">SETUP WIZARD</a></li>
 <li><a href="resources.html#download">DOWNLOAD</a></li>
-<li><a href="resources.html#development">DEVELOPMENT</a></li>
 <li><a href="resources.html#licensing">LICENSING</a></li>
 <li><a href="resources.html#donate">DONATE</a></li>
 <li><a href="resources.html#about">ABOUT</a></li>
