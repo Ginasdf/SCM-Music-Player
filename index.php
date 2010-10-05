@@ -27,7 +27,7 @@ SCMMusicPlayer.init("{'playlist':'http://www.youtube.com/my_playlists?p=60AB902F
 <h2>SCM Music Player</h2>
 <div id="content">
 <h3>INTRODUCTION</h3>
-<p>SCM Music Player is a free and open source web music player, trying to bring a seamless music experience for your website. Support Wordpress, Tumblr, Blogger.</p>
+<p>SCM Music Player is a free and open source web music player, to bring a seamless music experience for your website. Support Wordpress, Tumblr, Blogger.</p>
 
 <ul class="bullet"> 
 <li><strong>Play Musics</strong> - Support MP3, AAC, Youtube and FLV audio. <span class="new">New!</span></li> 
