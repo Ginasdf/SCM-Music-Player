@@ -20,7 +20,7 @@ SCM.states = {
  */
 
 SCM.Player = new Class({
-	Implements:Options,
+	Implements:[Options,Events],
 	options:{
 		volume:50,
 		autostart:false,
@@ -30,7 +30,6 @@ SCM.Player = new Class({
 		var self = this;
 		this.setOptions(options);
 		this.playlist = playlist;
-		this.stateListeners = [];
 		
 		//initialize playback states
 		this.playback = null;
@@ -62,13 +61,8 @@ SCM.Player = new Class({
 		if(this.options.autostart==true || this.options.autostart=="true")
 			(function(){ self.play(); }).delay(1);	
 	},
-	addStateListener:function(func){
-		this.stateListeners.push(func);
-	},
 	stateDispatcher:function(state){
-		this.stateListeners.each(function(func){
-			func(state);
-		});
+		this.fireEvent("statechange",state);
 		if(state==SCM.states.finish)
 			this.next();
 	},
@@ -410,12 +404,12 @@ SCM.PlaylistFetcher = new Class({
 });
 
 /*
- * UI Classes
+ * UI Classes (View)
  */
 SCM.AbstractUI = new Class({
 	setPlayer:function(player){
 		var self = this;
-		player.addStateListener(function(state){
+		player.addEvent("statechange",function(state){
 			self.onStateChange(state);
 		});
 		this.onPlayerReady(player);
