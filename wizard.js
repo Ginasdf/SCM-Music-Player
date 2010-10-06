@@ -246,7 +246,7 @@ asweb.SCMWizard = new Class({
              	if(config.file)
              		config.playlist = config.file;
              	else{
-             		config.playlist.map(function(el){
+             		config.playlist = config.playlist.map(function(el){
              			return {
              				title:el.title,
              				url:el.file
