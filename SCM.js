@@ -59,7 +59,7 @@ SCM.Player = new Class({
 		
 		//delay a bit to have the listeners ready
 		if(this.options.autostart==true || this.options.autostart=="true")
-			(function(){ self.play(); }).delay(1);	
+			(function(){ self.play(); }).delay(100);
 	},
 	stateDispatcher:function(state){
 		this.fireEvent("statechange",state);
@@ -223,6 +223,7 @@ SCM.YoutubePlayback = new Class({
 	},
 	start: function(url){
 		$(this.id).loadVideoById(SCM.parseYoutubeVideoId(url), 0, "small");
+		this.stateDispatcher(1);
 	},
 	play: function(){
 		$(this.id).playVideo();
@@ -567,8 +568,6 @@ SCM.BarUI = new Class({
 			mouseup:release,
 			mouseleave:release
 		});
-		
-		
 	},
 	setVolume:function(volume){
 		this.volume.set(volume);
