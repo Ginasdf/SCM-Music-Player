@@ -72,7 +72,6 @@ SCM.Player = new Class({
 		if(this.playback)
 			this.playback.pause();
 		this.index = index;
-		this.stateDispatcher(SCM.states.start);
 		
 		//decide whether to change playback (yt or sm)
 		var url = this.playlist[this.index].url;
@@ -81,6 +80,7 @@ SCM.Player = new Class({
 		else
 			this.playback = this.soundManagerPlayback;
 		//start new song
+		this.stateDispatcher(SCM.states.start);
 		this.playback.start(url);
 	},
 	next: function(){
@@ -92,8 +92,7 @@ SCM.Player = new Class({
 	play:function(){
 		if(!this.playback)
 			this.start(this.index);
-		else
-			this.playback.play();
+		this.playback.play();
 	},
 	seek:function(time){
 		this.playback.seek(time);
