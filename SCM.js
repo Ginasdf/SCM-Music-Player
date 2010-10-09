@@ -7,11 +7,11 @@
 window.SCM = window.SCM || {};
 
 SCM.states = {
-	start:0,
-	play:1,
-	pause:2,
-	finish:3,
-	error:4
+	start:"start",
+	play:"play",
+	pause:"pause",
+	finish:"finish",
+	error:"error"
 }
 
 /*
