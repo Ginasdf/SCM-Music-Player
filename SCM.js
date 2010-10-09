@@ -132,7 +132,7 @@ SCM.Player = new Class({
  * HTML5 Playback, Silverlight Playback maybe added in the future
  */
 
-SCM.AbstractPlayback = new Class({
+SCM.PlaybackTemplate = new Class({
 	Implements: Options,
 	options: {
 		onStateChange:function(state){}
@@ -153,7 +153,7 @@ SCM.AbstractPlayback = new Class({
 });
 
 SCM.SoundManagerPlayback = new Class({
-	Extends: SCM.AbstractPlayback,
+	Extends: SCM.PlaybackTemplate,
 	initialize: function(id,options){
 		this.parent(id,options);
 		this.sound = null;
@@ -210,7 +210,7 @@ SCM.SoundManagerPlayback = new Class({
 });
 
 SCM.YoutubePlayback = new Class({
-	Extends: SCM.AbstractPlayback,
+	Extends: SCM.PlaybackTemplate,
 	initialize: function(id, options){
 		this.parent(id,options);
 		
@@ -406,7 +406,7 @@ SCM.PlaylistFetcher = new Class({
 /*
  * UI Classes (View)
  */
-SCM.AbstractUI = new Class({
+SCM.UITemplate = new Class({
 	setPlayer:function(player){
 		var self = this;
 		player.addEvent("statechange",function(state){
@@ -419,7 +419,7 @@ SCM.AbstractUI = new Class({
 });
 
 SCM.BarUI = new Class({
-	Extends:SCM.AbstractUI,
+	Extends:SCM.UITemplate,
 	Implements:Options,
 	options:{
 		onPlaylistToggle:function(){}
@@ -444,7 +444,7 @@ SCM.BarUI = new Class({
 		this.setPlay(false);
 	},
 	onStateChange:function(state){
-		this.setPlay(state==SCM.states.play);
+		this.setPlay(state==SCM.states.play || state==SCM.states.start);
 		
 		if(state==SCM.states.start){
 			this.setCurrentTitle();
@@ -617,7 +617,7 @@ SCM.BarUI = new Class({
 });
 
 SCM.ListUI = new Class({
-	Extends:SCM.AbstractUI,
+	Extends:SCM.UITemplate,
 	initialize:function(){
 		var self = this;
 		this.index = 0;
