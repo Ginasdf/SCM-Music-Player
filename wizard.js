@@ -197,7 +197,7 @@ asweb.SCMWizard = new Class({
 			var playlist = form.dynamicURL;
 		}
 		return {
-			skin:form.skinType,
+			skin:form.skinType == 'custom' ? form.customSkin : form.skinType,
 			playback:playback,
 			playlist:playlist,
 			placement:form.placement,
