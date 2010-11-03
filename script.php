@@ -16,15 +16,16 @@ init:function(dataStr){
 	this.frameBgColor = '#FFF';
 	if(this.data.backgroundColor) 
 		this.frameBgColor = this.data.backgroundColor;
-	
-	if(!this.hasFrame || location.href.indexOf("scmplayer=true")>0){
-		if(!SCMMusicPlayer_isIE)
-			this.codeNonIE();
-		else
-			this.codeIE();
-		this.initEventsWithPlayer();
-	}else{
-		this.initEventsWithoutPlayer();
+	if(navigator.userAgent.match(/iPad|iPhone|Android|Blackberry/i) == null){
+		if(!this.hasFrame || location.href.indexOf("scmplayer=true")>0){
+			if(!SCMMusicPlayer_isIE)
+				this.codeNonIE();
+			else
+				this.codeIE();
+			this.initEventsWithPlayer();
+		}else{
+			this.initEventsWithoutPlayer();
+		}
 	}
 },
 codeNonIE:function(){
